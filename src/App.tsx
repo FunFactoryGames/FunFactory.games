@@ -1,7 +1,7 @@
 import heroImage from './assets/server-worlds.jpg';
 import minecraftImage from './assets/minecraft.jpg';
 import sevenDaysImage from './assets/seven-days.jpg';
-import projectYellowImage from './assets/project-yellow.jpg';
+import projectYellowImage from './assets/project-yellow-banner.webp';
 
 type Server = {
   number: string;
