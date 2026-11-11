@@ -13,7 +13,7 @@ run the **Deploy to GitHub Pages** workflow from the Actions tab.
 
 ## Server pages
 
-The Minecraft and 7 Days to Die pages live at `minecraft/` and
-`seven-days-to-die/`. Their text and connection placeholders are in
+The Minecraft, 7 Days to Die, and Rust pages live at `minecraft/`,
+`seven-days-to-die/`, and `rust/`. Their text and connection placeholders are in
 `src/App.tsx`; update those when the server details are confirmed. The build
 creates an entry point for each page so direct links work on GitHub Pages.
