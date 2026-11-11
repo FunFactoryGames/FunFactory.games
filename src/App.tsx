@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import heroImage from './assets/server-worlds.jpg';
 import minecraftImage from './assets/minecraft.jpg';
 import sevenDaysImage from './assets/seven-days.jpg';
+import rustImage from './assets/rust.jpg';
 import projectYellowImage from './assets/project-yellow-banner.webp';
 
 type Server = {
@@ -18,9 +19,9 @@ type Server = {
 
 // Add more servers here as their pages or links become available.
 const servers: Server[] = [
-  { number: '01', game: 'MINECRAFT', name: 'Minecraft', description: 'Build something great, explore new worlds, and make yourself at home.', image: minecraftImage, category: 'SANDBOX', relationship: 'FUN FACTORY GAMES', url: './minecraft/' },
-  { number: '02', game: '7 DAYS TO DIE', name: '7 Days to Die', description: 'Scavenge, build, and survive. The next adventure is just around the corner.', image: sevenDaysImage, category: 'SURVIVAL', relationship: 'FUN FACTORY GAMES', url: './seven-days-to-die/' },
-  { number: '03', game: 'FIVEM', name: 'Project Yellow', description: 'Find your story and make your mark in the world of FiveM roleplay.', image: projectYellowImage, category: 'ROLEPLAY', relationship: 'AFFILIATE', url: 'https://projectyellowrp.com', external: true },
+  { number: '02', game: 'MINECRAFT', name: 'Minecraft', description: 'Build something great, explore new worlds, and make yourself at home.', image: minecraftImage, category: 'SANDBOX', relationship: 'FUN FACTORY GAMES', url: './minecraft/' },
+  { number: '03', game: '7 DAYS TO DIE', name: '7 Days to Die', description: 'Scavenge, build, and survive. The next adventure is just around the corner.', image: sevenDaysImage, category: 'SURVIVAL', relationship: 'FUN FACTORY GAMES', url: './seven-days-to-die/' },
+  { number: '04', game: 'RUST', name: 'Rust', description: 'Gather resources, build your base, and make your way in a harsh world.', image: rustImage, category: 'SURVIVAL', relationship: 'FUN FACTORY GAMES', url: './rust/' },
 ];
 
 function Arrow({ diagonal = false }: { diagonal?: boolean }) {
@@ -35,12 +36,12 @@ function ServerCard({ server }: { server: Server }) {
   return <article className="server-card">
     <div className="card-image" style={{ backgroundImage: `url(${server.image})` }}>
       <div className="card-image-shade" />
-      <span className="card-number">{server.number} / 03</span>
+      <span className="card-number">{server.number} / 04</span>
       <span className="game-label">{server.game}</span>
       <span className="category">{server.category}</span>
     </div>
     <div className="card-body">
-      <div className="card-meta"><span className={server.external ? 'status-dot active' : 'status-dot'} />{server.external ? 'EXPLORE THE SERVER' : 'CONNECTION DETAILS COMING SOON'}<span className="relation">{server.relationship}</span></div>
+      <div className="card-meta"><span className="status-dot" />COMING SOON<span className="relation">{server.relationship}</span></div>
       <h3>{server.name}</h3>
       <p>{server.description}</p>
       <a className="card-link" href={server.url} target={server.external ? '_blank' : undefined} rel={server.external ? 'noopener noreferrer' : undefined}>{server.external ? 'Visit Project Yellow' : 'Explore server'} <Arrow diagonal />{server.external && <span className="sr-only"> (opens in a new tab)</span>}</a>
@@ -58,7 +59,7 @@ function LandingPage() {
         <div className="hero-content wrap"><div className="eyebrow"><span className="purple-dot" /> YOUR NEXT ADVENTURE STARTS HERE</div><h1>Good games.<br />Even better <em>company.</em></h1><p>Find your next favorite place to play. Discover game servers hosted by Fun Factory Games and friends.</p><div className="hero-actions"><a className="primary-button" href="#servers">Explore servers <Arrow /></a><a className="text-button" href="https://discord.gg/tjA493DzNp" target="_blank" rel="noopener noreferrer">Join our Discord <span>↗</span><span className="sr-only"> (opens in a new tab)</span></a></div></div>
         <div className="hero-bottom wrap"><span><span className="tiny-square" /> A COMMUNITY FOR EVERY KIND OF PLAYER</span><span>SCROLL TO EXPLORE <span className="scroll-arrow">↓</span></span></div>
       </section>
-      <section className="servers-section" id="servers"><div className="wrap"><div className="section-heading"><div><div className="eyebrow"><span className="purple-dot" /> FIND YOUR WORLD</div><h2>Pick a server.<br /><span>Make it yours.</span></h2></div><p>Different worlds, same love of the game.<br />Find your next place to play below.</p></div><div className="cards">{servers.map(server => <ServerCard key={server.name} server={server} />)}</div><div className="more-note"><span className="plus">+</span><div><strong>More worlds on the way.</strong><span>We're making room for more adventures. Check back for new additions.</span></div><span className="more-index">THE FUN IS JUST GETTING STARTED <Arrow /></span></div></div></section>
+      <section className="servers-section" id="servers"><div className="wrap"><div className="section-heading"><div><div className="eyebrow"><span className="purple-dot" /> FIND YOUR WORLD</div><h2>Pick a server.<br /><span>Make it yours.</span></h2></div><p>Different worlds, same love of the game.<br />Find your next place to play below.</p></div><article className="featured-server"><div className="featured-image" role="img" aria-label="Project Yellow banner" style={{ backgroundImage: `url(${projectYellowImage})` }}><span className="featured-tag">FEATURED AFFILIATE</span></div><div className="featured-body"><div className="eyebrow"><span className="purple-dot" /> FIVEM ROLEPLAY / AFFILIATE</div><h3>Project Yellow</h3><p>Find your story and make your mark in the world of FiveM roleplay.</p><a className="primary-button" href="https://projectyellowrp.com" target="_blank" rel="noopener noreferrer">Visit Project Yellow <Arrow diagonal /><span className="sr-only"> (opens in a new tab)</span></a></div></article><div className="upcoming-heading"><div><div className="eyebrow"><span className="purple-dot" /> MORE ADVENTURES AHEAD</div><h3>Coming soon</h3></div><p>We're working on these servers. Check back for connection details.</p></div><div className="cards">{servers.map(server => <ServerCard key={server.name} server={server} />)}</div><div className="more-note"><span className="plus">+</span><div><strong>More worlds on the way.</strong><span>We're making room for more adventures. Check back for new additions.</span></div><span className="more-index">THE FUN IS JUST GETTING STARTED <Arrow /></span></div></div></section>
       <section className="about-section" id="about"><div className="wrap about-inner"><div><div className="eyebrow"><span className="purple-dot" /> ABOUT THE FACTORY</div><h2>Made for the<br /><span>moments in between.</span></h2></div><div className="about-copy"><p>It's not just about the game. It's about the people you meet, the stories you make, and the good times along the way.</p><p>Fun Factory Games brings together places to play and communities worth discovering. So pick a world, jump in, and make some memories.</p><a href="#servers">Find your next adventure <Arrow /></a></div></div></section>
     </main>
     <footer><div className="wrap footer-inner"><Brand /><p>GOOD GAMES. GOOD PEOPLE. GOOD TIMES.</p><a href="#top">Back to top ↑</a></div><div className="wrap footer-bottom"><span>© {new Date().getFullYear()} FUN FACTORY GAMES</span><span>BUILT FOR THE LOVE OF PLAY.</span></div></footer>
@@ -74,6 +75,14 @@ const details = {
     description: 'Whether you love building a home, exploring the landscape, or teaming up with friends, Minecraft is a world you can make your own.',
     steps: ['Launch Minecraft and open the multiplayer menu.', 'When the connection details are available, add the server address.', 'Join the server and start exploring.'],
     note: 'The server address, supported edition, and version will be shared here when available.',
+  },
+  rust: {
+    title: 'Rust', image: rustImage, label: 'SURVIVAL / FUN FACTORY GAMES',
+    headline: 'Build. Adapt. Survive.',
+    intro: 'Gather resources, build a base, and find your place in the unforgiving world of Rust.',
+    description: 'Start with the basics, make the most of what you find, and work toward making your mark in a challenging survival world.',
+    steps: ['Launch Rust and open the server browser.', 'When the connection details are available, find or connect to the server.', 'Join the server and start your adventure.'],
+    note: 'The server name, address, version, and any connection requirements will be shared here when available.',
   },
   'seven-days-to-die': {
     title: '7 Days to Die', image: sevenDaysImage, label: 'SURVIVAL / FUN FACTORY GAMES',
@@ -103,6 +112,6 @@ function ServerPage({ game }: { game: keyof typeof details }) {
 export default function App() {
   const path = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
   const slug = path.split('/').pop();
-  if (slug === 'minecraft' || slug === 'seven-days-to-die') return <ServerPage game={slug} />;
+  if (slug === 'minecraft' || slug === 'seven-days-to-die' || slug === 'rust') return <ServerPage game={slug} />;
   return <LandingPage />;
 }
